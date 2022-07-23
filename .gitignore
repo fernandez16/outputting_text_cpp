@@ -1,0 +1,5 @@
+debug/outputting_text_debug.exe
+release/outputting_text_release.exe
+debug/output_text_file.txt
+release/output_text_file.txt
+src/output_text_file.txt
