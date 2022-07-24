@@ -4,29 +4,40 @@
 
 using namespace std;
 
-int main() {
-    // Checks wether or not the output file already exists
-    ifstream fileChecker("output_text_file.txt");
-    bool fileCheckResult = fileChecker.good();
+string askTextInput()
+{
+    cout << "Please type in your text:" << endl;
+    string outputText;
+    getline(cin, outputText);
+    return outputText;
+}
 
-    // Creates &, or only, selects the output file
+bool fileCheck()
+{
+    ifstream fileChecker("output_text_file.txt");
+    return fileChecker.good();
+}
+
+void saveIntoFile(string outputText, bool fileCheckResult)
+{
     ofstream outputTextFile;
     outputTextFile.open("output_text_file.txt");
 
-    cout << "Please type in your text:" << endl;
+    outputTextFile << "asdf";
 
-    // Asks for user input and saves it
-    string outputText;
-    getline(cin, outputText);
-
-    // Saves the user's text input in the output file
-    outputTextFile << outputText;
-
-    // Prints a different message depending on the result of the initial file check
     if (fileCheckResult)
     {
-        cout << "Your text file has been updated!";
-    } else {
-        cout << "Your text file has been created!";
+        cout << "Your text file has been updated!" << endl;
     }
+    else
+    {
+        cout << "Your text file has been created!" << endl;
+    }
+}
+
+int main()
+{
+    string outputText = askTextInput();
+    bool fileCheckResult = fileCheck();
+    saveIntoFile(outputText, fileCheckResult);
 }
